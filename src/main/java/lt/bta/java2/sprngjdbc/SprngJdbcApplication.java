@@ -55,19 +55,6 @@ class Api {
 
 	@GetMapping("/product/{id}")
 	public Product product(@PathVariable int id) {
-//		return jdbcTemplate.query(
-//				"SELECT * FROM products WHERE id = ?",
-//
-//				new Object[] {id},
-//
-//				(rs) -> {
-//					if (rs.next()) {
-//						return new ProductMapper().mapRow(rs, 1);
-//					}
-//					return null;
-//				});
-
-		// arba galima paprasčiau:
 		return jdbcTemplate.queryForObject("SELECT * FROM products WHERE id = ?", new ProductMapper(), id);
 	}
 
